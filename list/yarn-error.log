@@ -1,0 +1,55 @@
+Arguments: 
+  /usr/bin/node /usr/bin/yarn install vuex-models --save
+
+PATH: 
+  /home/riros/.cargo/bin:/usr/local/heroku/bin:/usr/lib/llvm/8/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/bin:/usr/lib64/subversion/bin:/home/riros/Android/Sdk/tools:/home/riros/Android/Sdk/platform-tools:/home/riros/opt/android-studio/bin:/opt/oracle-jdk-bin-1.8.0.202/bin
+
+Yarn version: 
+  1.19.0
+
+Node version: 
+  12.12.0
+
+Platform: 
+  linux x64
+
+Trace: 
+  SyntaxError: /home/riros/work/ds/nark/backend/narkp/narkp/local/components/ds/vue/list/package.json: Unexpected token } in JSON at position 347
+      at JSON.parse (<anonymous>)
+      at /usr/lib64/node_modules/yarn/lib/cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (/usr/lib64/node_modules/yarn/lib/cli.js:304:30)
+      at /usr/lib64/node_modules/yarn/lib/cli.js:315:13
+
+npm manifest: 
+  {
+    "name": "firstapp",
+    "description": "A first Vue.js project",
+    "version": "1.0.0",
+    "author": "Eugene <metanit.com>",
+    "scripts": {
+      "dev": "webpack-dev-server --hot --open",
+      "build": "webpack"
+    },
+    "dependencies": {
+      "vue": "^2.6",
+      "vue-multiselect": "^2.1.6",
+      "vuex": "^3.1.1",
+      "vuex-persistedstate": "^2.5.4",
+    },
+    "devDependencies": {
+      "vue-loader": "^15.4.2",
+      "vue-template-compiler": "^2.5.17",
+      "css-loader": "^1.0.0",
+      "style-loader": "*",
+      "webpack": "^4.20.0",
+      "webpack-cli": "^3.1.2",
+      "webpack-dev-server": "^3.1.9"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

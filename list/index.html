@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="robots" content="index, follow"/>
+    <meta name="keywords" content="some Keywords"/>
+    <meta name="description" content="some Description"/>
+    <link href="vendor/vue-multiselect.min.css?15713821548933" type="text/css" rel="stylesheet"/>
+    <link href="vendor/vuelidate.css?1571384403327" type="text/css" rel="stylesheet"/>
+    <link href="vendor/markup/css/main.css?1571587123162785" type="text/css" data-template-style="true"
+          rel="stylesheet"/>
+    <meta charset="utf-8">
+    <title>Платформа экспертиз</title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+    <!--    <link rel="shortcut icon" type="image/x-icon" href="/local/templates/main/favicon.ico"/>-->
+</head>
+<body>
+<header class="header">
+    <div class="container">
+        <div class="header-container">
+            <div class="header-burger js-headerBurger">
+                <svg class="icon icon-menu-burger ">
+                    <use xlink:href="vendor/markup/images/sprites.svg#menu-burger"></use>
+                </svg>
+                <svg class="icon icon-menu-close ">
+                    <use xlink:href="vendor/markup/images/sprites.svg#menu-close"></use>
+                </svg>
+            </div>
+
+            <div class="header-logo">
+                <a class="header-logo__title" href="/" title="На главную страницу">
+                    <span>Платформа </span>Экспертиз</a>
+            </div>
+
+
+            <div class="header-menu">
+
+
+                <ul class="header-menu__list">
+                    <li class="header-menu__elem">
+                        <a class="header-menu__link" href="/targets/">Цели экспертизы</a>
+                    </li>
+                    <li class="header-menu__elem">
+                        <a class="header-menu__link" href="/results/">Результат</a>
+                    </li>
+                    <li class="header-menu__elem">
+                        <a class="header-menu__link" href="/documents/">Список документов</a>
+                    </li>
+                    <li class="header-menu__elem">
+                        <a class="header-menu__link" href="/about/">О нас</a>
+                    </li>
+                    <li class="header-menu__elem">
+                        <a class="header-menu__link" href="/contacts/">Контакты</a>
+                    </li>
+                </ul>
+                <div class="header-right">
+                    <div class="header-auth">
+                        <a class="button style_red" href="/lc/" style="width: 199px">
+              <span class="button__text">
+										<svg class="icon icon-lock ">
+											<use xlink:href="vendor/markup/images/sprites.svg#lock"></use>
+										</svg>
+                Личный кабинет
+              </span>
+                        </a>
+                    </div>
+                    <div class="header-contact">
+                        <div class="header-contact__mail">
+                            <a href="mailto:info@domain.com">info@domain.com</a></div>
+                        <div
+                                class="header-contact__phone"><a href="tel:+7 (666) 666-99-99">+7 (666) 666-99-99</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</header>
+<div class="page-head cabinet-head">
+    <div class="container">
+        <div class="page-head__container">
+            <h1 class="page-head__title">Личный кабинет эксперта</h1>
+        </div>
+    </div>
+</div>
+<style>
+    .theme--light.v-application {
+        background: white;
+    }
+</style>
+<div class="page-content">
+    <div class="container size_small">
+        <form id="app" class="expert-form"
+
+              @submit="checkForm"
+              method="post"
+        >
+            <input type="hidden" name="sessid" id="sessid" value="7236e39f43e9c3fe0055ec25f296398d"/> <input
+                type="hidden" name="USER_ID" value="">
+
+            <!--            <div class="form-group">-->
+            <!--                <div class="form-field"-->
+            <!--                     :class="formFieldClasses($v.user.username)"-->
+            <!--                ><span-->
+            <!--                        class="form-placeholder">ФИО/Наименование</span>-->
+            <!--                    <input v-model="$v.user.username.$model" class="form-input" type="text" name="fio" autocomplete="off" required-->
+            <!--                           placeholder="Введите..."-->
+            <!--                    >-->
+            <!--                    <div class="form-field__icon"></div>-->
+            <!--                </div>-->
+
+            <!--            </div>-->
+            <!--            <div class="form-group">-->
+            <!--                <div class="form-subtitle">Контактные данные</div>-->
+            <!--                <div class="form-grid">-->
+            <!--                    <div class="form-col-12">-->
+            <!--                        <div class="form-field"-->
+            <!--                             :class="formFieldClasses($v.user.email)"-->
+            <!--                        ><span class="form-placeholder">Электронная почта</span>-->
+            <!--                            <input class="form-input" v-model="$v.user.email.$model" type="email" name="email" autocomplete="off" required-->
+            <!--                                   placeholder="Введите...">-->
+            <!--                            <div class="form-field__icon"></div>-->
+            <!--                        </div>-->
+            <!--                    </div>-->
+
+            <!--                    <div class="form-col-4">-->
+            <!--                        <div class="form-field"-->
+            <!--                             :class="formFieldClasses($v.user.phone)"-->
+            <!--                        >-->
+            <!--                            <label for="PHONE" class="form-placeholder">Телефон</label>-->
+
+            <!--                            <the-mask-->
+            <!--                                    class="form-input" type="tel" name="PHONE"-->
+            <!--                                    v-model="$v.user.phone.$model" mask="+7 (###) ###-##-##" default-value="+79996665544"-->
+            <!--                                    placeholder="+7 (___) ___-__-__"-->
+            <!--                            ></the-mask>-->
+            <!--                            <div class="form-field__icon"></div>-->
+            <!--                        </div>-->
+            <!--                    </div>-->
+            <!--                    <div class="form-col-5">-->
+            <!--                        <div class="form-field"-->
+            <!--                             :class="formFieldClasses($v.user.uf_subject_rf)"-->
+            <!--                        >-->
+            <!--                            <label for="UF_SUBJECT_RF" class="form-placeholder">Субъект РФ</label>-->
+            <!--                            <multiselect id="UF_SUBJECT_RF" name="UF_SUBJECT_RF"-->
+            <!--                                         v-model="$v.user.uf_subject_rf.$model"-->
+            <!--                                         :options="options"-->
+            <!--                                         :multiple="false"-->
+            <!--                                         placeholder="Выберите..."-->
+            <!--                                         :label="false"-->
+            <!--                                         track-by="name"-->
+            <!--                                         label="name"-->
+            <!--                                         :close-on-select="true"-->
+            <!--                                         :class="[status($v.user.uf_subject_rf)]"-->
+            <!--                                         deselect-label="Нажмите enter для удаления"-->
+            <!--                                         deselect-group-label="Нажмите enter для удаления группы"-->
+            <!--                                         select-label="Нажмите enter для выбора"-->
+            <!--                                         tag-placeholder="Нажмите enter для создания тега"-->
+            <!--                                         selected-label="Выбрано"-->
+            <!--                            >-->
+            <!--                                <span slot="noResult">Ничего не найдено...</span>-->
+            <!--                            </multiselect>-->
+            <!--                            <div class="form-field__icon"></div>-->
+            <!--                        </div>-->
+            <!--                    </div>-->
+
+
+            <!--                    <div class="form-col-3">-->
+            <!--                        <div class="form-field"-->
+            <!--                             :class="formFieldClasses($v.user.city)"-->
+
+            <!--                        ><span class="form-placeholder">Город</span>-->
+            <!--                            <input v-model="$v.user.city.$model" class="form-input" type="text" name="city" autocomplete="off" required-->
+            <!--                                   placeholder="Введите...">-->
+            <!--                            <div class="form-field__icon"></div>-->
+            <!--                        </div>-->
+            <!--                    </div>-->
+            <!--                </div>-->
+            <!--            </div>-->
+            <div class="form-group">
+                <!--                <div class="form-subtitle">Заявки</div>-->
+                <div id="test_app"></div>
+
+                <!--            <v-sheet-->
+                <!--                :color="`white lighten-4`"-->
+                <!--                class="px-3 pt-3 pb-3"-->
+                <!--            >-->
+                <!--              <v-skeleton-loader-->
+                <!--                  class="mx-auto"-->
+                <!--                  max-width="100%"-->
+                <!--                  type="table"-->
+                <!--              ></v-skeleton-loader>-->
+                <!--            </v-sheet>-->
+
+                <!--          <div class="apl-options">-->
+                <!--            <div class="apl-new"><a class="apl-new__button" href="#"><span>-->
+                <!--										<svg class="icon icon-plus ">-->
+                <!--											<use xlink:href="images/sprites.svg#plus"></use>-->
+                <!--										</svg></span> Подать новую заявку </a></div>-->
+                <!--            <div class="apl-info">-->
+                <!--              <div class="apl-info-active">Активные заявки <span class="green">3</span></div>-->
+                <!--              <div class="apl-info-total">Общее кол-во заявок: <strong>150</strong></div>-->
+                <!--            </div>-->
+                <!--          </div>-->
+                <!--          <div class="apl-table">-->
+                <!--            <div class="apl-table__title">Мои заявки</div>-->
+                <!--            <table>-->
+                <!--              <thead>-->
+                <!--              <tr>-->
+                <!--                <th>Номер заявки</th>-->
+                <!--                <th>Дата</th>-->
+                <!--                <th>Статус</th>-->
+                <!--              </tr>-->
+                <!--              </thead>-->
+                <!--              <tbody>-->
+                <!--              <tr>-->
+                <!--                <td>321</td>-->
+                <!--                <td>22.02.2019</td>-->
+                <!--                <td>Завершено</td>-->
+                <!--              </tr>-->
+                <!--              <tr>-->
+                <!--                <td>345</td>-->
+                <!--                <td>15.05.2019</td>-->
+                <!--                <td>Завершено</td>-->
+                <!--              </tr>-->
+                <!--              <tr>-->
+                <!--                <td>450</td>-->
+                <!--                <td>20.06.2019</td>-->
+                <!--                <td>В работе</td>-->
+                <!--              </tr>-->
+                <!--              <tr>-->
+                <!--                <td>478</td>-->
+                <!--                <td>05.07.2019</td>-->
+                <!--                <td>Завершено</td>-->
+                <!--              </tr>-->
+                <!--              </tbody>-->
+                <!--            </table>-->
+                <!--            <div class="apl-table-paginator">-->
+                <!--              <div class="apl-table-quantity"><span>Показывать по</span>-->
+                <!--                <select class="js-select">-->
+                <!--                  <option value="1" data-value="twelve">12</option>-->
+                <!--                  <option value="2" data-value="doubled">24</option>-->
+                <!--                  <option value="3" data-value="tripled">36</option>-->
+                <!--                </select>-->
+                <!--              </div>-->
+                <!--              <div class="apl-table-page">-->
+                <!--                <div class="apl-table-page__num">1 из 4</div>-->
+                <!--                <div class="apl-table-nav">-->
+                <!--                  <button class="apl-table__prev" type="button"></button>-->
+                <!--                  <button class="apl-table__next" type="button"></button>-->
+                <!--                </div>-->
+                <!--              </div>-->
+                <!--            </div>-->
+                <!--          </div>-->
+
+
+            </div>
+            <!--            <div class="form-group" v-show="message.show">-->
+            <!--                &lt;!&ndash;            <v-alert v-bind:type="message.type">&ndash;&gt;-->
+            <!--                {{ message.text }}-->
+            <!--                &lt;!&ndash;            </v-alert>&ndash;&gt;-->
+            <!--            </div>-->
+            <div class="form-submit">
+                <button class="button style_red size_large" type="submit"><span
+                        class="button__text">Сохранить	</span>
+                </button>
+                <button
+                        @click="this.close()"
+                        class="button style_white size_large" type="button"><span
+                        class="button__text">Отменить	</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-container">
+            <div class="footer-copy">
+                2019 Платформа экспертиз
+            </div>
+            <div class="footer-nav"><a class="footer-nav__link" href="/policy/">Политика конфиденциальности</a></div>
+        </div>
+    </div>
+</footer>
+
+
+<!--<script type="text/javascript" src="/bitrix/js/main/polyfill/core/dist/polyfill.bundle.js?1568968776247685"></script>-->
+<!--<script type="text/javascript" src="/bitrix/js/ui/vue/devtools/dist/devtools.bundle.js?15689668433218"></script>-->
+<!--<script type="text/javascript" src="/bitrix/js/ui/vue/vendor/v2/dist/dev.vue.bundle.js?1568968776335776"></script>-->
+<!--<script type="text/javascript" src="/bitrix/js/ui/vue/dist/vue.bitrix.bundle.js?156896877617612"></script>-->
+
+
+<!--<script type="text/javascript" src="/local/templates/main/components/multiselect/jquery.min.js?157052118888145"></script>-->
+<!--<script type="text/javascript" src="vendor/markup/js/vendor.js?1569341552129514"></script>-->
+<!--<script type="text/javascript" src="vendor/markup/js/main.js?1569999632279548"></script>-->
+<!--<script type="text/javascript" src="/local/templates/main/components/multiselect/vue-multiselect.min.js?157068831245072"></script>-->
+<!--<script type="text/javascript" src="/local/templates/main/components/vuelidate/validators.min.js?157138383910751"></script>-->
+<!--<script type="text/javascript" src="/local/templates/main/components/vuelidate/vuelidate.min.js?157138383912283"></script>-->
+<!--<script type="text/javascript" src="/local/templates/main/components/vuemask/VueTheMask.umd.js?157139563715744"></script>-->
+
+<!--<script>-->
+<!--    // BX.Vue.use(Vuetify);-->
+<!--    const {required, minLength, maxLength, email} = window.validators;-->
+
+<!--    &lt;!&ndash;    &ndash;&gt;-->
+<!--    BX.Vue.use(VueMultiselect);-->
+<!--    BX.Vue.use(window.vuelidate.default);-->
+<!--    BX.Vue.use(VueTheMask);-->
+<!--    BX.Vue.create({-->
+<!--        el: '#app',-->
+<!--        components: {-->
+<!--            Multiselect: window.VueMultiselect.default-->
+<!--        },-->
+<!--        // vuetify: new Vuetify(),-->
+<!--        data: {-->
+<!--            options: [{'name':'Республика Адыгея (Адыгея)','id':'28'},{'name':'Республика Башкортостан','id':'29'},{'name':'Республика Бурятия','id':'30'},{'name':'Республика Алтай','id':'31'},{'name':'Республика Дагестан','id':'32'},{'name':'Республика Ингушетия','id':'33'},{'name':'Кабардино-Балкарская Республика','id':'34'},{'name':'Республика Калмыкия','id':'35'},{'name':'Карачаево-Черкесская Республика','id':'36'},{'name':'Республика Карелия','id':'37'},{'name':'Республика Коми','id':'38'},{'name':'Республика Марий Эл','id':'39'},{'name':'Республика Мордовия','id':'40'},{'name':'Республика Саха (Якутия)','id':'41'},{'name':'Республика Северная Осетия - Алания','id':'42'},{'name':'Республика Татарстан (Татарстан)','id':'43'},{'name':'Республика Тыва','id':'44'},{'name':'Удмуртская Республика','id':'45'},{'name':'Республика Хакасия','id':'46'},{'name':'Чеченская Республика','id':'47'},{'name':'Чувашская Республика - Чувашия','id':'48'},{'name':'Алтайский край','id':'49'},{'name':'Краснодарский край','id':'50'},{'name':'Красноярский край','id':'51'},{'name':'Приморский край','id':'52'},{'name':'Ставропольский край','id':'53'},{'name':'Хабаровский край','id':'54'},{'name':'Амурская область','id':'55'},{'name':'Архангельская область','id':'56'},{'name':'Астраханская область','id':'57'},{'name':'Белгородская область','id':'58'},{'name':'Брянская область','id':'59'},{'name':'Владимирская область','id':'60'},{'name':'Волгоградская область','id':'61'},{'name':'Вологодская область','id':'62'},{'name':'Воронежская область','id':'63'},{'name':'Ивановская область','id':'64'},{'name':'Иркутская область','id':'65'},{'name':'Калининградская область','id':'66'},{'name':'Калужская область','id':'67'},{'name':'Камчатский край','id':'68'},{'name':'Кемеровская область','id':'69'},{'name':'Кировская область','id':'70'},{'name':'Костромская область','id':'71'},{'name':'Курганская область','id':'72'},{'name':'Курская область','id':'73'},{'name':'Ленинградская область','id':'74'},{'name':'Липецкая область','id':'75'},{'name':'Магаданская область','id':'76'},{'name':'Московская область','id':'77'},{'name':'Мурманская область','id':'78'},{'name':'Нижегородская область','id':'79'},{'name':'Новгородская область','id':'80'},{'name':'Новосибирская область','id':'81'},{'name':'Омская область','id':'82'},{'name':'Оренбургская область','id':'83'},{'name':'Орловская область','id':'84'},{'name':'Пензенская область','id':'85'},{'name':'Пермский край','id':'86'},{'name':'Псковская область','id':'87'},{'name':'Ростовская область','id':'88'},{'name':'Рязанская область','id':'89'},{'name':'Самарская область','id':'90'},{'name':'Саратовская область','id':'91'},{'name':'Сахалинская область','id':'92'},{'name':'Свердловская область','id':'93'},{'name':'Смоленская область','id':'94'},{'name':'Тамбовская область','id':'95'},{'name':'Тверская область','id':'96'},{'name':'Томская область','id':'97'},{'name':'Тульская область','id':'98'},{'name':'Тюменская область','id':'99'},{'name':'Ульяновская область','id':'100'},{'name':'Челябинская область','id':'101'},{'name':'Забайкальский край','id':'102'},{'name':'Ярославская область','id':'103'},{'name':'г. Москва','id':'104'},{'name':'Санкт-Петербург','id':'105'},{'name':'Еврейская автономная область','id':'106'},{'name':'Ненецкий автономный округ','id':'107'},{'name':'Ханты-Мансийский автономный округ - Югра','id':'108'},{'name':'Чукотский автономный округ','id':'109'},{'name':'Ямало-Ненецкий автономный округ','id':'110'},{'name':'Республика Крым','id':'111'},{'name':'Севастополь','id':'112'},{'name':'Иные территории, включая город и космодром Байконур','id':'113'}],-->
+<!--            // user: {-->
+<!--            // uf_subject_rf: '',-->
+<!--            // name: '',-->
+<!--            // phone: '',-->
+<!--            // email: '',-->
+<!--            // city: '',-->
+<!--            // }-->
+<!--            user: {-->
+<!--                uf_subject_rf: '',-->
+<!--                username: '',-->
+<!--                phone: '',-->
+<!--                email: '',-->
+<!--                city: '',-->
+<!--            },-->
+<!--            message: {show: false, text: '', type: null},-->
+
+<!--        },-->
+<!--        validations: {-->
+<!--            user: {-->
+<!--                uf_subject_rf: {-->
+<!--                    required-->
+<!--                },-->
+<!--                username: {-->
+<!--                    required-->
+<!--                },-->
+<!--                phone: {-->
+<!--                    required,-->
+<!--                    minLength: minLength(10)-->
+<!--                },-->
+<!--                email: {-->
+<!--                    email-->
+<!--                },-->
+<!--                city: {-->
+<!--                    required,-->
+<!--                    minLength: minLength(3),-->
+<!--                }-->
+<!--            }-->
+<!--        },-->
+<!--        methods: {-->
+<!--            status(validation) {-->
+<!--                return {-->
+<!--                    error: validation.$error,-->
+<!--                    dirty: validation.$dirty,-->
+<!--                }-->
+<!--            },-->
+<!--            formFieldClasses(model) {-->
+<!--                return [this.status(model).error ? 'is-error' : '', (this.status(model).dirty && !this.status(model).error) ? 'is-success' : '']-->
+<!--            },-->
+<!--            checkForm: function (e) {-->
+<!--                e.preventDefault();-->
+<!--                console.log(this.$v.$anyError);-->
+<!--                if (this.$v.$anyError) this.showError('Ошибка отправки формы');-->
+<!--                else this.showSuccess("Сохранено");-->
+<!--            },-->
+<!--            showError: function (msg) {-->
+<!--                this.message.type = 'error';-->
+<!--                this.message.show = true;-->
+<!--                this.message.text = msg;-->
+<!--            },-->
+<!--            showSuccess: function (msg) {-->
+<!--                this.message.type = 'success';-->
+<!--                this.message.show = true;-->
+<!--                this.message.text = msg;-->
+
+<!--            }-->
+
+
+<!--        }-->
+
+<!--    });-->
+<!--    //rows: //,-->
+<!--    //cols: //,-->
+<!--    /////-->
+<!--    //initial_lines_on_page: //,-->
+<!--    //lines_on_page_options: //,-->
+<!--    /////-->
+<!--    //active_count: //,-->
+<!--    //total_unfiltered_count://,-->
+<!--    //// filterKey: "",-->
+<!--    //open_link: "//",-->
+<!--    //open_link__field_name: "//",-->
+<!--    //app_name: '//',-->
+<!--    //uid: '//',-->
+<!--    //sortable_fields: //,-->
+<!--    //back_uri: '//',-->
+<!--    ////searchable_field_names: ////,-->
+<!--    //filterable_field_names:-->
+
+<!--</script>-->
+
+<script src="dist/dev-bundle.js"></script>
+
+
+</body>
+</html>

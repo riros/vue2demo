@@ -1,0 +1,135 @@
+
+/*Эти стили не используются, они перенесены в общий main.css */
+
+
+
+.icon-arrow_up {
+    width: 18px;
+    height: 18px;
+}
+
+.div-flex {
+    display: flex;
+}
+
+td a {
+    color: #007eb4;
+}
+
+/*div.inline {*/
+/*  float: left;*/
+/*}*/
+
+/*.clearBoth {*/
+/*  clear: both;*/
+/*}*/
+
+.max_size {
+    width: 100%;
+    height: 100%;
+
+}
+
+.type_link {
+    color: #007eb4;
+    cursor: pointer;
+
+}
+
+.apl-table tr td {
+    cursor: pointer;
+
+}
+
+select:invalid {
+    color: grey;
+}
+
+
+.apl-table-quantity {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin-right: 30px;
+}
+.apl-table-quantity .multiselect {
+    width: 64px;
+}
+.apl-table-paginator .multiselect__tags {
+    display: inline-block;
+    border: none;
+    width: 44px;
+    height: 14px;
+    color: #6a6a6a;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    padding: 7px 5px 0;
+    text-align: center;
+}
+.apl-table-paginator .multiselect__input,
+.apl-table-paginator .multiselect__single {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+}
+.apl-table-paginator .multiselect__select:before {
+    display:none;
+}
+.apl-table-paginator .multiselect__select {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 10px;
+    height: 6px;
+    background: url(images/select-arrow_small.svg) no-repeat center;
+}
+
+.apl-table-paginator .multiselect__content-wrapper {
+    -webkit-box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    background-color: #ffffff;
+}
+
+.apl-table-paginator .multiselect__option--highlight,
+.apl-table-paginator .multiselect__option--selected {
+    background: #007eb4;
+    color: #fff;
+    font-weight:normal;
+}
+.apl-table-paginator .multiselect__option {
+    white-space: normal;
+    min-height: 15px;
+    padding: 8px;
+}
+.apl-table-paginator .multiselect__option--highlight:after {
+    display: none;
+}
+.apl-table-paginator .multiselect__option--selected:after {
+    visibility: hidden;
+}
+

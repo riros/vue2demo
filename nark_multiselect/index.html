@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="robots" content="index, follow"/>
+    <meta name="keywords" content="some Keywords"/>
+    <meta name="description" content="some Description"/>
+    <link href="vendor/vue-multiselect.min.css" type="text/css" rel="stylesheet"/>
+    <link href="vendor/vuelidate.css" type="text/css" rel="stylesheet"/>
+    <link rel="stylesheet" href="vendor/markup/css/main.css">
+    <meta charset="utf-8">
+    <title>Платформа экспертиз</title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+    <!--    <link rel="shortcut icon" type="image/x-icon" href="/local/templates/main/favicon.ico"/>-->
+</head>
+<body>
+<header class="header">
+    <div class="container">
+        <div class="header-container">
+            <div class="header-burger js-headerBurger">
+                <svg class="icon icon-menu-burger ">
+                    <use xlink:href="vendor/markup/images/sprites.svg#menu-burger"></use>
+                </svg>
+                <svg class="icon icon-menu-close ">
+                    <use xlink:href="vendor/markup/images/sprites.svg#menu-close"></use>
+                </svg>
+            </div>
+
+            <div class="header-logo">
+                <a class="header-logo__title" href="/" title="На главную страницу">
+                    <span>Платформа </span>Экспертиз</a>
+            </div>
+
+
+            <div class="header-menu">
+
+
+                <ul class="header-menu__list">
+                    <li class="header-menu__elem">
+                        <a class="header-menu__link" href="/targets/">Цели экспертизы</a>
+                    </li>
+                    <li class="header-menu__elem">
+                        <a class="header-menu__link" href="/results/">Результат</a>
+                    </li>
+                    <li class="header-menu__elem">
+                        <a class="header-menu__link" href="/documents/">Список документов</a>
+                    </li>
+                    <li class="header-menu__elem">
+                        <a class="header-menu__link" href="/about/">О нас</a>
+                    </li>
+                    <li class="header-menu__elem">
+                        <a class="header-menu__link" href="/contacts/">Контакты</a>
+                    </li>
+                </ul>
+                <div class="header-right">
+                    <div class="header-auth">
+                        <a class="button style_red" href="/lc/" style="width: 199px">
+              <span class="button__text">
+										<svg class="icon icon-lock ">
+											<use xlink:href="vendor/markup/images/sprites.svg#lock"></use>
+										</svg>
+                Личный кабинет
+              </span>
+                        </a>
+                    </div>
+                    <div class="header-contact">
+                        <div class="header-contact__mail">
+                            <a href="mailto:info@domain.com">info@domain.com</a></div>
+                        <div
+                                class="header-contact__phone"><a href="tel:+7 (666) 666-99-99">+7 (666) 666-99-99</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="page-head cabinet-head">
+    <div class="container">
+        <div class="page-head__container">
+            <h1 class="page-head__title">Личный кабинет эксперта</h1>
+        </div>
+    </div>
+</div>
+<style>
+    .theme--light.v-application {
+        background: white;
+    }
+</style>
+<div class="page-content">
+    <div class="container size_small">
+        <form class="expert-form"
+
+              @submit="checkForm"
+              method="post"
+        >
+            <input type="hidden" name="sessid" id="sessid" value="7236e39f43e9c3fe0055ec25f296398d"/> <input
+                type="hidden" name="USER_ID" value="">
+
+            <div class="form-group">
+                <div class="form-field"
+                     :class="formFieldClasses($v.user.username)"
+                ><span
+                        class="form-placeholder">ФИО/Наименование</span>
+                    <input v-model="$v.user.username.$model" class="form-input" type="text" name="fio"
+                           autocomplete="off" required
+                           placeholder="Введите..."
+                    >
+                    <div class="form-field__icon"></div>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <div class="form-subtitle">Контактные данные</div>
+                <div class="form-grid">
+                    <div class="form-col-12">
+                        <div class="form-field"
+                             :class="formFieldClasses($v.user.email)"
+                        ><span class="form-placeholder">Электронная почта</span>
+                            <input class="form-input" v-model="$v.user.email.$model" type="email" name="email"
+                                   autocomplete="off" required
+                                   placeholder="Введите...">
+                            <div class="form-field__icon"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-col-4">
+                        <div class="form-field"
+                             :class="formFieldClasses($v.user.phone)"
+                        >
+                            <label for="PHONE" class="form-placeholder">Телефон</label>
+                            <input class="form-input">
+<!--                            <the-mask-->
+<!--                                    class="form-input" type="tel" name="PHONE"-->
+<!--                                    v-model="$v.user.phone.$model" mask="+7 (###) ###-##-##"-->
+<!--                                    default-value="+79996665544"-->
+<!--                                    placeholder="+7 (___) ___-__-__"-->
+<!--                            ></the-mask>-->
+<!--                            <div class="form-field__icon"></div>-->
+                        </div>
+                    </div>
+                    <div id="test_app">
+                        <custom-multiselect></custom-multiselect>
+                    </div>
+                    <!--                        <div class="form-field"-->
+                    <!--                             :class="formFieldClasses($v.user.uf_subject_rf)"-->
+                    <!--                        >-->
+                    <!--                            <label for="UF_SUBJECT_RF" class="form-placeholder">Субъект РФ</label>-->
+                    <!--                            <multiselect id="UF_SUBJECT_RF" name="UF_SUBJECT_RF"-->
+                    <!--                                         v-model="$v.user.uf_subject_rf.$model"-->
+                    <!--                                         :options="options"-->
+                    <!--                                         :multiple="false"-->
+                    <!--                                         placeholder="Выберите..."-->
+                    <!--                                         :label="false"-->
+                    <!--                                         track-by="name"-->
+                    <!--                                         label="name"-->
+                    <!--                                         :close-on-select="true"-->
+                    <!--                                         :class="[status($v.user.uf_subject_rf)]"-->
+                    <!--                                         deselect-label="Нажмите enter для удаления"-->
+                    <!--                                         deselect-group-label="Нажмите enter для удаления группы"-->
+                    <!--                                         select-label="Нажмите enter для выбора"-->
+                    <!--                                         tag-placeholder="Нажмите enter для создания тега"-->
+                    <!--                                         selected-label="Выбрано"-->
+                    <!--                            >-->
+                    <!--                                <span slot="noResult">Ничего не найдено...</span>-->
+                    <!--                            </multiselect>-->
+                    <!--                            <div class="form-field__icon"></div>-->
+                    <!--                        </div>-->
+
+
+                    <div class="form-col-4">
+                        <div class="form-field"
+                             :class="formFieldClasses($v.user.city)"
+
+                        ><span class="form-placeholder">Город</span>
+                            <input v-model="$v.user.city.$model" class="form-input" type="text" name="city"
+                                   autocomplete="off" required
+                                   placeholder="Введите...">
+                            <div class="form-field__icon"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-submit">
+                <button class="button style_red size_large" type="submit"><span
+                        class="button__text">Сохранить	</span></button>
+                <button
+                        @click="this.close()"
+                        class="button style_white size_large" type="button"><span
+                        class="button__text">Отменить	</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-container">
+            <div class="footer-copy">
+                2019 Платформа экспертиз
+            </div>
+            <div class="footer-nav"><a class="footer-nav__link" href="/policy/">Политика конфиденциальности</a></div>
+        </div>
+    </div>
+</footer>
+
+
+<!--<script type="text/javascript" src="/bitrix/js/main/polyfill/core/dist/polyfill.bundle.js?1568968776247685"></script>-->
+<!--<script type="text/javascript" src="/bitrix/js/ui/vue/devtools/dist/devtools.bundle.js?15689668433218"></script>-->
+<!--<script type="text/javascript" src="/bitrix/js/ui/vue/vendor/v2/dist/dev.vue.bundle.js?1568968776335776"></script>-->
+<!--<script type="text/javascript" src="/bitrix/js/ui/vue/dist/vue.bitrix.bundle.js?156896877617612"></script>-->
+
+
+<!--<script type="text/javascript" src="/local/templates/main/components/multiselect/jquery.min.js?157052118888145"></script>-->
+<script type="text/javascript" src="vendor/vendor.js?1569341552129514"></script>
+<!--<script type="text/javascript" src="vendor/markup/js/main.js?1569999632279548"></script>-->
+<!--<script type="text/javascript" src="vendor/vue-multiselect.min.js?157068831245072"></script>-->
+<script type="text/javascript" src="vendor/validators.min.js?157138383910751"></script>
+<!--<script type="text/javascript" src="vendor/vuelidate.min.js?157138383912283"></script>-->
+<!--<script type="text/javascript" src="vendor/VueTheMask.umd.js?157139563715744"></script>-->
+<script src="dist/CustomMultiSelect.js"></script>
+</body>
+</html>
+<script>
+    // import CustomMultiselect from "./src/Index";
+    // export default {
+    //     components: {CustomMultiselect}
+    // }
+</script>
+<script>
+    // import CustomMultiselect from "./src/Custom";
+    //
+    // export default {
+    //     components: {CustomMultiselect}
+    // }
+</script>
